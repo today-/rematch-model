@@ -1,7 +1,6 @@
 import { effect, model, reducer } from '../src';
 
-@model
-export default class TodoStore {
+export class TodoStore {
 	name = 'todo';
 
 	state = {};
@@ -9,8 +8,8 @@ export default class TodoStore {
 	@effect
 	addTodo({ text }) {
 		this.ADD_TODO({
-			id: Math.random().toString().substring(2),
-			text,
+			id: Math.random().toString(),
+			text
 		});
 	}
 
@@ -41,7 +40,9 @@ export default class TodoStore {
 
 	static withToggled({ todo }) {
 		return {
-			toggled: Object.keys(todo).filter(f => todo[f].completed),
+			toggled: Object.keys(todo).filter(f => todo[f].completed)
 		};
 	}
 }
+
+export default model(TodoStore);
