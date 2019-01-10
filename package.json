@@ -4,8 +4,7 @@
   "description": "Class-based models for rematch",
   "main": "lib/index.js",
   "files": [
-    "lib",
-    "src"
+    "lib"
   ],
   "repository": {
     "type": "git",
@@ -25,7 +24,7 @@
     "react",
     "redux"
   ],
-  "homepage": "https://github.com/today-/rematch-inject",
+  "homepage": "https://github.com/today-/rematch-model",
   "dependencies": {
     "@rematch/core": "^1.0.6"
   },
