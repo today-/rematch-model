@@ -57,4 +57,4 @@ export class TodoStore {
     }
 }
 
-export default model(TodoStore);
+export default model<ITodoState>(TodoStore);

@@ -1,4 +1,4 @@
-import { Model, ModelEffects, Action } from '@rematch/core';
+import {Model, ModelEffects, Action} from '@rematch/core';
 
 export type ModelEffect<S> = (
     this: { [key: string]: (payload?: any, meta?: any) => Action<any, any> },
@@ -9,6 +9,11 @@ export type ModelEffect<S> = (
 export interface IModelClass<T> {
     name: string;
     new(): T;
+}
+
+export interface IModelCreator {
+    (ModelClass: IModelClass<any>): Model<any, any>;
+    <T>(ModelClass: IModelClass<any>): T;
 }
 
 const WrapReducer = (fn: Function, self: any) => function(this: any, ...args: any[]) {
@@ -27,7 +32,7 @@ const WrapEffect = (fn: Function, self: any) => function(this: any, ...args: any
     return fn.apply(self, args);
 };
 
-export const model = (ModelClass: IModelClass<any>): Model => {
+export const model: IModelCreator = (ModelClass: IModelClass<any>): Model => {
     const instance = new ModelClass();
     const { state } = instance;
 
