@@ -8,11 +8,12 @@ export type ModelEffect<S> = (
 
 export interface IModelClass<T> {
     name: string;
+    state?: any;
     new(): T;
 }
 
 export interface IModelCreator {
-    (ModelClass: IModelClass<any>): Model<any, any>;
+    (ModelClass: IModelClass<any>): Model<typeof ModelClass['state']>;
     <T>(ModelClass: IModelClass<any>): Model<T>;
 }
 
