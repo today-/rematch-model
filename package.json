@@ -1,6 +1,6 @@
 {
   "name": "rematch-model",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Class-based models for rematch",
   "main": "lib/index.js",
   "files": [
