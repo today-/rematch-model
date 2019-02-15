@@ -13,7 +13,7 @@ export interface IModelClass<T> {
 
 export interface IModelCreator {
     (ModelClass: IModelClass<any>): Model<any, any>;
-    <T>(ModelClass: IModelClass<any>): T;
+    <T>(ModelClass: IModelClass<any>): Model<T>;
 }
 
 const WrapReducer = (fn: Function, self: any) => function(this: any, ...args: any[]) {
