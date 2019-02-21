@@ -9,12 +9,14 @@ export type ModelEffect<S> = (
 export interface IModelClass<T> {
     name: string;
     state?: any;
+    prototype?: any;
     new(): T;
 }
 
 export interface IModelCreator {
     (ModelClass: IModelClass<any>): Model<typeof ModelClass['state']>;
     <T>(ModelClass: IModelClass<any>): Model<T>;
+    <K, T extends IModelClass<K>>(ModelClass: T): Model<T['prototype']['state']>;
 }
 
 const WrapReducer = (fn: Function, self: any) => function(this: any, ...args: any[]) {
