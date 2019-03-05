@@ -91,10 +91,11 @@ TypeScript examples:
 [Injecting to components](./examples/todo-list-ts.tsx)
 
 ```typescript jsx
-export type TodoListProps = {
-    todo: ITodoState;
-    toggled: ITodoItemRecord[];
-} & TodoStore;
+import { inject, Injected } from 'rematch-inject';
+
+export type TodoListProps = 
+    Injected<TodoStore> &
+    Injected<typeof TodoStore.withToggled>;
 
 @inject('todo')
 @inject(TodoStore.withToggled)

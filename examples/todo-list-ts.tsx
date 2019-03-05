@@ -1,16 +1,15 @@
 /* tslint:disable */
 import * as React from 'react';
-import { inject } from 'rematch-inject';
+import { inject, Injected } from 'rematch-inject';
 import { autobind } from 'core-decorators';
 
 import { AddTodo } from '../add-todo';
 import { TodoItem } from '../todo-item';
-import { TodoStore, ITodoState, ITodoItemRecord } from './todo-store-ts';
+import { TodoStore } from './todo-store-ts';
 
-export type TodoListProps = {
-    todo: ITodoState;
-    toggled: ITodoItemRecord[];
-} & TodoStore;
+export type TodoListProps = {} &
+    Injected<TodoStore> &
+    Injected<typeof TodoStore.withToggled>;
 
 @inject('todo')
 @inject(TodoStore.withToggled)

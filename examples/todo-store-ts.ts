@@ -13,7 +13,7 @@ export interface ITodoState {
 export type TodoArgument = Partial<ITodoItemRecord>;
 
 export class TodoStore {
-    public name = 'todo';
+    public name: 'todo' = 'todo';
 
     public state: ITodoState = {};
 
@@ -57,4 +57,4 @@ export class TodoStore {
     }
 }
 
-export default model<ITodoState>(TodoStore);
+export default model(TodoStore);
